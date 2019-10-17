@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="customLauncherEnabled" value="true" />
+    <option name="customLauncherPath" value="/opt/lang-tools/scala/sbt/bin/sbt-launch.jar" />
+    <option name="customVMEnabled" value="true" />
+    <option name="customVMPath" value="$JAVA_HOME$" />
+    <option name="vmParameters" value="-Dsbt.global.base=/home/alanding/.sbt -Dsbt.boot.directory=/home/alanding/.sbt/boot/ -Dsbt.repository.config=/home/alanding/.sbt/repositories -Dsbt.ivy.home=/home/alanding/.ivy2 -Dsbt.log.format=true -Dsbt.override.build.repos=true -Dfile.encoding=UTF8 -Xms128m -Xmx512M -Duser.language=zh -Xss2M -XX:+CMSClassUnloadingEnabled" />
+  </component>
+</project>

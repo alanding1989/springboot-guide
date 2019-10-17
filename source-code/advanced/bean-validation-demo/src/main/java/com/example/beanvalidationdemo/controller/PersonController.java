@@ -1,12 +1,12 @@
 package com.example.beanvalidationdemo.controller;
 
 import com.example.beanvalidationdemo.entity.Person;
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,13 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Size;
-
 @RestController
 @RequestMapping("/api")
 @Validated
+// 在类上加@Validated让Spring校验方法参数，在对应参数前用@Valid注解
 public class PersonController {
 
     @PostMapping("/person")
@@ -30,7 +27,7 @@ public class PersonController {
     }
 
     @GetMapping("/person/{id}")
-    public ResponseEntity<Integer> getPersonByID(@Valid @PathVariable("id") @Max(value = 5, message = "超过 id 的范围了") Integer id) {
+    public ResponseEntity<Integer> getPersonById(@Valid @PathVariable("id") @Max(value = 5, message = "超过 id 的范围了") Integer id) {
         return ResponseEntity.ok().body(id);
     }
 

@@ -1,8 +1,19 @@
 package com.example.beanvalidationdemo;
 
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.example.beanvalidationdemo.entity.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +23,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.util.Set;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -51,7 +50,6 @@ public class PersonControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("classId").value("82938390"))
                 .andExpect(MockMvcResultMatchers.jsonPath("sex").value("Man"))
                 .andExpect(MockMvcResultMatchers.jsonPath("email").value("Snailclimb@qq.com"));
-        ;
     }
 
     @Test
@@ -69,7 +67,6 @@ public class PersonControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("name").value("name 不能为空"))
                 .andExpect(MockMvcResultMatchers.jsonPath("email").value("email 格式不正确"))
                 .andExpect(MockMvcResultMatchers.jsonPath("region").value("Region 值不在可选范围内"));
-        ;
     }
 
     @Test

@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 @Service
 @Validated
+// 数据验证还可以用在任意的组件上，而不是控制器级别的输入。
 public class PersonService {
 
     public void validatePerson(@Valid Person person) {

@@ -1,16 +1,14 @@
 package com.example.demo.scheduletask;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author shuang.kou
@@ -23,6 +21,8 @@ public class ScheduledTasks {
 
     /**
      * fixedRate：固定速率执行。每5秒执行一次。
+     * 这个地方有个坑，如果顺序执行几个任务，其中每个任务有超过５秒，有低于５秒的，那么
+     * 定时５秒就没有意义。
      */
     @Async
     @Scheduled(fixedRate = 5000)

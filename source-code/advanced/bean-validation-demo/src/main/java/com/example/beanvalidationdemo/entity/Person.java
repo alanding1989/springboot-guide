@@ -25,7 +25,7 @@ public class Person {
     @NotNull(message = "name 不能为空")
     private String name;
 
-    @Pattern(regexp = Constants.sexs, message = "sex 值不在可选范围")
+    @Pattern(regexp = Constants.SEXS, message = "sex 值不在可选范围")
     @NotNull(message = "sex 不能为空")
     private String sex;
 

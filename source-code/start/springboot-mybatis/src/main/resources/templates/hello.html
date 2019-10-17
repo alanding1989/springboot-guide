@@ -1,0 +1,13 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>hello</title>
+  <meta http-equiv="content-type" content="test/html; charset=utf-8"/>
+</head>
+<body>
+<p th:test="${name}">name</p>
+<p th:text="'Hello! ' + ${name} + '!'">hello world</p>
+<p th:text="|Hello! ${name}!|">hello world</p>
+</body>
+
+</html>
